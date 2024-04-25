@@ -37,15 +37,11 @@ jobs:
           paths:
             - node_modules
 
-      # Install curl
-      - run:
-          name: Install curl
-          command: sudo apt-get update && sudo apt-get install -y curl
-
       # Send Slack notification
       - run:
           name: Notify Slack
           command: |
+            apt-get update && apt-get install -y curl
             curl -X POST -H 'Content-type: application/json' --data '{"text":"Your build has completed."}' https://hooks.slack.com/services/T0560AKL4QJ/B0713dfd756VPT/7tyZbQaoLcBfdfvEJVybADpGux7
 
 workflows:
