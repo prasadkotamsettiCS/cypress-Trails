@@ -42,7 +42,7 @@ jobs:
           name: Notify Slack
           command: |
             apt-get update && apt-get install -y curl
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Your build has completed."}' https://hooks.slack.com/services/T0560AKL4QJ/B0713dfd756VPT/7tyZbQaoLcBfdfvEJVybADpGux7
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Your build has completed."}' https://hooks.slack.com/services/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
 
 workflows:
   build-deploy:
