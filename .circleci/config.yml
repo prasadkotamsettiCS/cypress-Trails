@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  slack: circleci/slack@4.4.4
+
 jobs:
   build:
     docker:
@@ -30,12 +34,11 @@ jobs:
           paths:
             - node_modules
 
-      # Send Slack notification
-      - run:
-          name: Notify Slack
-          command: |
-            apt-get update && apt-get install -y curl
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Your build has completed."}' https://hooks.slack.com/services/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
+      # Send Slack notification using Slack orb
+      - slack/notify:
+          channel: $circleci_builds
+          event: always
+          ignore_errors: true
 
 workflows:
   build-deploy:
