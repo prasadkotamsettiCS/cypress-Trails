@@ -1,0 +1,20 @@
+{
+  "name": "cypress-trails",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "npx cypress run",
+    "clear-reports": "rm -rf reports && rm -rf cypress/screenshots && rm -rf cypress/videos",
+    "all-tests": "npm run clear-reports && npm run cy:run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cypress": "^13.8.1"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.3"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-04-25T16:38:37.545Z",
+    "end": "2024-04-25T16:38:43.514Z",
+    "duration": 5969,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b7c348cb-6c18-41dc-b70c-607c475c4268",
+      "title": "",
+      "fullFile": "cypress/e2e/TestCases/VerifyLoginScenario.cy.js",
+      "file": "cypress/e2e/TestCases/VerifyLoginScenario.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f8679a3d-948c-4a0a-963d-7ae27ec0e315",
+          "title": "Loging scenarios ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify login test with valid details ",
+              "fullTitle": "Loging scenarios  Verify login test with valid details ",
+              "timedOut": null,
+              "duration": 3988,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/\");\ncy.get(\"input[type='email']\").type(\"csaautomation0@gmail.com\");\ncy.get(\"input[name=password]\").type(\"Adminpass90*\");\ncy.get('button[type=\"button\"]').first().click();",
+              "err": {},
+              "uuid": "8fb66d5f-1aff-45a5-bdca-7db60933d8bb",
+              "parentUUID": "f8679a3d-948c-4a0a-963d-7ae27ec0e315",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify login test with valid details ",
+              "fullTitle": "Loging scenarios  Verify login test with valid details ",
+              "timedOut": null,
+              "duration": 1892,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/\");\ncy.get(\"input[type='email']\").type(\"csaautomation0@gmail.com\");\ncy.get(\"input[name=password]\").type(\"Adminpass9**\");\ncy.get('button[type=\"button\"]').first().click();\ncy.get('[data-cy=\"auth-error-message\"]').should(\"have.text\", \"The email or password you entered is incorrect\");",
+              "err": {},
+              "uuid": "852a2de0-351d-4521-8458-99de8370e2ad",
+              "parentUUID": "f8679a3d-948c-4a0a-963d-7ae27ec0e315",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8fb66d5f-1aff-45a5-bdca-7db60933d8bb",
+            "852a2de0-351d-4521-8458-99de8370e2ad"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5880,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "custom-title",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "quiet": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
