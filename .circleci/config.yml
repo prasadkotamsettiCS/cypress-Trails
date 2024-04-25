@@ -11,6 +11,12 @@ jobs:
     steps:
       - checkout
 
+      # Install CURL
+      - run:
+          name: Install CURL
+          command: |
+            apt-get update && apt-get install -y curl
+
       # Install dependencies
       - restore_cache:
           keys:
