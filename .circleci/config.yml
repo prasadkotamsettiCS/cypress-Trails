@@ -15,7 +15,13 @@ jobs:
             - dependencies-{{ checksum "package.json" }}
       - run:
           name: Install Dependencies
-          command: npm install
+          command: |
+            npm install
+            npx cypress install
+      - save_cache:
+          key: dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
 
       # Run Cypress tests
       - run:
@@ -26,27 +32,9 @@ jobs:
       - store_artifacts:
           path: reports
 
-      # Optionally, clear reports, screenshots, and videos after tests
-      - run:
-          name: Clear Reports, Screenshots, and Videos
-          command: npm run clear-reports
-
-      # Optionally, save cache
-      - save_cache:
-          key: dependencies-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-
-      # Install curl
-      - run:
-          name: Install curl
-          command: sudo apt-get update && sudo apt-get install -y curl
-
-      # Send Slack notification
-      - run:
-          name: Notify Slack
-          command: |
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Your build has completed."}' https://hooks.slack.com/services/T0560AKL4QJ/B0713dfd756VPT/7tyZbQaoLcBfdfvEJVybADpGux7
+      # Store test results as XML
+      - store_test_results:
+          path: cypress/results
 
 workflows:
   build-deploy:
