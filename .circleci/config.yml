@@ -1,21 +1,13 @@
 version: 2.1
-
-orbs:
-  slack: circleci/slack@4.13.2
-
 jobs:
   build:
     docker:
       - image: cypress/included:latest
+
     working_directory: ~/project
+
     steps:
       - checkout
-
-      # Install CURL
-      - run:
-          name: Install CURL
-          command: |
-            apt-get update && apt-get install -y curl
 
       # Install dependencies
       - restore_cache:
@@ -34,17 +26,27 @@ jobs:
       - store_artifacts:
           path: reports
 
+      # Optionally, clear reports, screenshots, and videos after tests
+      - run:
+          name: Clear Reports, Screenshots, and Videos
+          command: npm run clear-reports
+
       # Optionally, save cache
       - save_cache:
           key: dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
 
-      # Send Slack notification using Slack orb
-      - slack/notify:
-          channel: $circleci_builds
-          event: always
-          ignore_errors: true
+      # Install curl
+      - run:
+          name: Install curl
+          command: sudo apt-get update && sudo apt-get install -y curl
+
+      # Send Slack notification
+      - run:
+          name: Notify Slack
+          command: |
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Your build has completed."}' https://hooks.slack.com/services/T0560AKL4QJ/B0713dfd756VPT/7tyZbQaoLcBfdfvEJVybADpGux7
 
 workflows:
   build-deploy:
