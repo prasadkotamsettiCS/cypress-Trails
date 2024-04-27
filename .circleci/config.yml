@@ -34,7 +34,7 @@ jobs:
 
       # Store test results as XML
       - store_test_results:
-          path: cypress/results
+          path: reports
 
 workflows:
   build-deploy:
